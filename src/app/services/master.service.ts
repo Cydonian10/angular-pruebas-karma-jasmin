@@ -6,6 +6,7 @@ export class MasterService {
   constructor(private valueService: ValueService) {}
 
   getValue() {
-    return this.valueService.getValue();
+    const value = this.valueService.getValue();
+    return value;
   }
 }
