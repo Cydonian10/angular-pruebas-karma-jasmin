@@ -8,20 +8,21 @@ import { generateManyProducts } from 'src/app/models/product.mock';
   template: `
     <section class="container">
       <div class="my-grid">
-        <article class="" *ngFor="let product of products">
-          <figure>
-            <img
-              class="card-image-top"
-              [src]="product.images[0]"
-              height="150"
-              style="object-fit: contain; width:100%"
-            />
-          </figure>
-          <figcaption style="font-size: 14px;" class="h6">
-            {{ product.title }} -- {{ product.price }}
-          </figcaption>
-        </article>
+        <!-- <article *ngFor="let product of products"> -->
+        <app-product
+          [product]="product"
+          *ngFor="let product of products"
+        ></app-product>
+        <!-- </article> -->
       </div>
+      <button
+        [disabled]="status === 'loading'"
+        (click)="getAllProducts()"
+        class="btn btn-primary"
+      >
+        Loas More
+        <span *ngIf="status === 'loading'">...loading</span>
+      </button>
     </section>
   `,
   styles: [
@@ -37,17 +38,28 @@ import { generateManyProducts } from 'src/app/models/product.mock';
 })
 export class HomeComponent {
   public products: Product[] = [];
+  limit = 10;
+  offset = 0;
+  status: 'loading' | 'success' | 'error' | 'init' = 'init';
 
   constructor(private productSrv: ProductService) {}
 
   ngOnInit() {
-    this.productSrv.getAll().subscribe({
+    this.getAllProducts();
+  }
+
+  getAllProducts() {
+    this.status = 'loading';
+    this.productSrv.getAll(this.limit, this.offset).subscribe({
       next: (resp) => {
-        this.products = resp;
+        this.products = [...this.products, ...resp];
+        this.offset += this.limit;
+        this.status = 'success';
+      },
+      error: (err) => {
+        this.products = [];
+        this.status = 'error';
       },
     });
-
-    const data = generateManyProducts();
-    console.log(data);
   }
 }

@@ -8,9 +8,10 @@ import { HomeComponent } from './page/home/home.component';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { PersonComponent } from './page/person/person.component';
 import { PersonOneComponent } from './components/person-one/person-one.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PersonComponent, PersonOneComponent],
+  declarations: [AppComponent, HomeComponent, PersonComponent, PersonOneComponent, ProductComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
     {

@@ -6,7 +6,7 @@ import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { PersonComponent } from 'src/app/page/person/person.component';
 
-fdescribe('PersonOneComponent', () => {
+describe('PersonOneComponent', () => {
   let component: PersonOneComponent;
   let fixture: ComponentFixture<PersonOneComponent>;
 
@@ -106,7 +106,7 @@ class HostComponent {
   }
 }
 
-fdescribe('PersonComponent from HostComponent', () => {
+describe('PersonComponent from HostComponent', () => {
   let component: HostComponent;
   let fixture: ComponentFixture<HostComponent>;
 
