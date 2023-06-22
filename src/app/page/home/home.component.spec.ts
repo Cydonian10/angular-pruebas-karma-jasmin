@@ -12,7 +12,7 @@ import { generateManyProducts } from 'src/app/models/product.mock';
 import { of, defer } from 'rxjs';
 import { By } from '@angular/platform-browser';
 
-fdescribe('Home Component', () => {
+describe('Home Component', () => {
   let homeComponent: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let productSrv: jasmine.SpyObj<ProductService>;
