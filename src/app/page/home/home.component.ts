@@ -41,7 +41,7 @@ export class HomeComponent {
   constructor(private productSrv: ProductService) {}
 
   ngOnInit() {
-    this.productSrv.getAllSimple().subscribe({
+    this.productSrv.getAll().subscribe({
       next: (resp) => {
         this.products = resp;
       },

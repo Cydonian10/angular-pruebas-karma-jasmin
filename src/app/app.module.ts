@@ -6,9 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './page/home/home.component';
 import { TokenInterceptor } from './interceptor/token.interceptor';
+import { PersonComponent } from './page/person/person.component';
+import { PersonOneComponent } from './components/person-one/person-one.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, PersonComponent, PersonOneComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
     {
