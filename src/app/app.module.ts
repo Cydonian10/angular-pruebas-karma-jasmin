@@ -9,10 +9,23 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
 import { PersonComponent } from './page/person/person.component';
 import { PersonOneComponent } from './components/person-one/person-one.component';
 import { ProductComponent } from './components/product/product.component';
+import { OtherComponent } from './page/other/other.component';
+import { HighligthDirective } from './directives/highligth.directive';
+import { FormsModule } from '@angular/forms';
+import { ReservePipe } from './pipes/reserve.pipe';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PersonComponent, PersonOneComponent, ProductComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    PersonComponent,
+    PersonOneComponent,
+    ProductComponent,
+    OtherComponent,
+    HighligthDirective,
+    ReservePipe,
+  ],
+  imports: [FormsModule, BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
