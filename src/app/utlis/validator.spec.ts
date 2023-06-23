@@ -1,7 +1,7 @@
 import { FormControl, FormGroup } from '@angular/forms';
 import { MyValidators } from './validators';
 
-fdescribe('Tests for MyValidators', () => {
+describe('Tests for MyValidators', () => {
   describe('Test for validPassword', () => {
     it('should return null when password is right', () => {
       // Arrange
