@@ -25,6 +25,7 @@ module.exports = function (config) {
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
+
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/03-pruebas'),
       subdir: '.',
@@ -42,6 +43,10 @@ module.exports = function (config) {
       }
     },
     reporters: ['mocha'],
+    mochaReporter: {
+      ignoreSkipped: true,
+    },
+    colors:true,
     browsers: ['ChromeHeadless'],
     customLaunchers:{
       ChromeHeadlessCI: {

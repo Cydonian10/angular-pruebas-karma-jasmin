@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './page/home/home.component';
 import { PersonComponent } from './page/person/person.component';
 import { OtherComponent } from './page/other/other.component';
+import { FormsComponent } from './page/forms/forms.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,14 @@ const routes: Routes = [
   {
     path: 'others',
     component: OtherComponent,
+  },
+  {
+    path: 'forms',
+    component: FormsComponent,
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 

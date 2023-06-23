@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.form-group {
+  width: 100%;
+  padding: 10px;
+}
+
+input {
+  width: 100%;
+}

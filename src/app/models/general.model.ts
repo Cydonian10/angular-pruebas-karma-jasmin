@@ -21,3 +21,13 @@ export interface CreateProductDTO extends Omit<Product, 'id' | 'category'> {
 }
 
 export interface UpdateProductDTO extends Partial<CreateProductDTO> {}
+
+export interface IUser {
+  id: string;
+  email: string;
+  password: string;
+  name: string;
+  role?: 'customer' | 'admin';
+}
+
+export interface CreateUserDTO extends Omit<IUser, 'id'> {}

@@ -11,8 +11,9 @@ import { PersonOneComponent } from './components/person-one/person-one.component
 import { ProductComponent } from './components/product/product.component';
 import { OtherComponent } from './page/other/other.component';
 import { HighligthDirective } from './directives/highligth.directive';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReservePipe } from './pipes/reserve.pipe';
+import { FormsComponent } from './page/forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,15 @@ import { ReservePipe } from './pipes/reserve.pipe';
     OtherComponent,
     HighligthDirective,
     ReservePipe,
+    FormsComponent,
   ],
-  imports: [FormsModule, BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    FormsModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
