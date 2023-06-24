@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 import { generateManyProducts } from 'src/app/models/product.mock';
 import { of, defer } from 'rxjs';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('Home Component', () => {
   let homeComponent: HomeComponent;
@@ -21,6 +22,7 @@ describe('Home Component', () => {
     const spy = jasmine.createSpyObj('ProductService', ['getAll']);
 
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [HomeComponent, ProductComponent],
       providers: [
         {

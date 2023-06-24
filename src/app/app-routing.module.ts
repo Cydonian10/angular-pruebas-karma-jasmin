@@ -6,7 +6,7 @@ import { OtherComponent } from './page/other/other.component';
 import { FormsComponent } from './page/forms/forms.component';
 import { DetalleComponent } from './page/detalle/detalle.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,

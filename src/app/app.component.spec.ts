@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
 })
 class BannerComponentStub {}
 
-fdescribe('App Component', () => {
+describe('App Component', () => {
   let app: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   beforeEach(async () => {
