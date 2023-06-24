@@ -4,6 +4,7 @@ import { HomeComponent } from './page/home/home.component';
 import { PersonComponent } from './page/person/person.component';
 import { OtherComponent } from './page/other/other.component';
 import { FormsComponent } from './page/forms/forms.component';
+import { DetalleComponent } from './page/detalle/detalle.component';
 
 const routes: Routes = [
   {
@@ -23,13 +24,21 @@ const routes: Routes = [
     component: FormsComponent,
   },
   {
+    path: 'detalle/:id',
+    component: DetalleComponent,
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      bindToComponentInputs: true,
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

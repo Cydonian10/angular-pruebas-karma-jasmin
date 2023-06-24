@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Product } from '../../models/general.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -16,6 +17,12 @@ import { Product } from '../../models/general.model';
       <figcaption style="font-size: 14px;" class="h6">
         {{ product.title }} -- {{ product.price }}
       </figcaption>
+      <button
+        [routerLink]="['detalle', product.id]"
+        class="btn btn-sm btn-secondary"
+      >
+        Ver
+      </button>
     </ng-container>
   `,
   styles: [],

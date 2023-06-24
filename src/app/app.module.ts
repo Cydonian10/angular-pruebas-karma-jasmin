@@ -14,6 +14,7 @@ import { HighligthDirective } from './directives/highligth.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReservePipe } from './pipes/reserve.pipe';
 import { FormsComponent } from './page/forms/forms.component';
+import { DetalleComponent } from './page/detalle/detalle.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsComponent } from './page/forms/forms.component';
     HighligthDirective,
     ReservePipe,
     FormsComponent,
+    DetalleComponent,
   ],
   imports: [
     FormsModule,

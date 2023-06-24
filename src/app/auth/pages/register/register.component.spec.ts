@@ -17,14 +17,17 @@ import {
 import { setInpuValueUI } from 'testing/forms';
 import { generateOneUser } from '../../../models/user.mock';
 import { UserService } from '../../../services/users/user.service';
+import { Router } from '@angular/router';
 
 describe('Register Component', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
   let userService: jasmine.SpyObj<UserService>;
+  let router: jasmine.SpyObj<Router>;
 
   beforeEach(() => {
     const spy = jasmine.createSpyObj('UserService', ['create']);
+    const spyRouter = jasmine.createSpyObj('Router', ['navigateByUrl']);
 
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule],
@@ -34,11 +37,16 @@ describe('Register Component', () => {
           provide: UserService,
           useValue: spy,
         },
+        {
+          provide: Router,
+          useValue: spyRouter,
+        },
       ],
     });
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
     userService = TestBed.inject(UserService) as jasmine.SpyObj<UserService>;
+    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
     fixture.detectChanges();
   });
 
@@ -177,5 +185,36 @@ describe('Register Component', () => {
     expect(component.status).toEqual('error');
     expect(component.form.valid).toBeTruthy();
     expect(userService.create).toHaveBeenCalled();
+  }));
+
+  /**
+   * Utlizando FakeAsync para router naviagate url /login
+   */
+  it('should the form be successfully router navigate a /login', fakeAsync(() => {
+    component.form.patchValue({
+      name: 'Gabriell',
+      email: 'ga@email.com',
+      password: '123123123',
+      confirmPassword: '123123123',
+      checkTerms: true,
+    });
+    const mockUser = generateOneUser();
+
+    userService.create.and.returnValue(asyncData(mockUser));
+
+    clickElement(fixture, 'btn-submit', true);
+    fixture.detectChanges();
+    expect(component.status).toEqual('loading');
+
+    tick(); // exec pending task
+    fixture.detectChanges();
+
+    expect(component.status).toEqual('success');
+    expect(component.form.valid).toBeTruthy();
+    expect(userService.create).toHaveBeenCalled();
+    /**
+     * Si fue llamdo con el parametro /login
+     */
+    expect(router.navigateByUrl).toHaveBeenCalledWith('/login');
   }));
 });

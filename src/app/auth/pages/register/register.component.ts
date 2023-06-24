@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../../services/users/user.service';
 import { MyValidators } from 'src/app/utlis/validators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -182,7 +183,11 @@ export class RegisterComponent {
   );
   status: 'loading' | 'success' | 'error' | 'init' = 'init';
 
-  constructor(private fb: FormBuilder, private usersService: UserService) {}
+  constructor(
+    private fb: FormBuilder,
+    private usersService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -194,7 +199,7 @@ export class RegisterComponent {
       this.usersService.create(value).subscribe({
         next: (rta) => {
           this.status = 'success';
-          console.log(rta);
+          this.router.navigateByUrl('/login');
         },
         error: () => {
           this.status = 'error';
